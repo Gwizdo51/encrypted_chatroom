@@ -18,12 +18,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'Alice',
             'email' => 'alice@mail.local',
             'password' => Hash::make('alice123'),
+            // 'public_key' => [],
         ]);
 
         User::create([
             'name' => 'Bob',
             'email' => 'bob@mail.local',
             'password' => Hash::make('bob123'),
+            // 'public_key' => [],
         ]);
     }
 }

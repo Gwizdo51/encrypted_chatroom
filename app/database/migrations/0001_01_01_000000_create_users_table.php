@@ -21,7 +21,8 @@ return new class extends Migration
             $table->text('two_factor_secret')->after('password')->nullable();
             $table->text('two_factor_recovery_codes')->after('two_factor_secret')->nullable();
             $table->timestamp('two_factor_confirmed_at')->after('two_factor_recovery_codes')->nullable();
-            $table->string('public_key', 2048)->nullable();
+            // $table->string('public_key', 2048);
+            $table->json('public_key')->nullable();
             $table->timestamps();
         });
 

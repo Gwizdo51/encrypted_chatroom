@@ -3,6 +3,8 @@ name: "encrypted_chat_server"
 networks:
   net:
     name: "encrypted_chat_server"
+    # name: "webapps"
+    # external: true
 
 services:
 
@@ -82,7 +84,7 @@ services:
     - "../../app:/var/www"
     # - "/srv/docker_data/encrypted_chat/storage:/var/www/storage/app/public"
     # - "/srv/docker_data/encrypted_chat/sqlite:/var/www/sqlite"
-    # - "/home/arthur/code/docker_data/yt2mp3/certs/self.crt:/mnt/self.pem:ro"
+    - "/srv/docker_data/encrypted_chat/certs/self.crt:/mnt/self.crt:ro"
     # run as the user that cloned the repository (replace if necessary)
     user: "1000:1000"
     # restart: "unless-stopped"
@@ -185,7 +187,7 @@ services:
     working_dir: "/app"
     volumes:
     - "../../app:/app"
-    # - "/srv/docker_data/certs:/mnt:ro"
+    - "/srv/docker_data/encrypted_chat/certs:/mnt:ro"
     # run as the user that cloned the repository (replace if necessary)
     user: "1000:1000"
     # restart: "unless-stopped"
@@ -218,7 +220,7 @@ services:
     # - "jobs"
     - "reverb"
     volumes:
-    # - "/home/arthur/code/docker_data/yt2mp3/certs:/etc/nginx/certs:ro" # modify if necessary
+    - "/srv/docker_data/encrypted_chat/certs:/etc/nginx/certs:ro" # modify if necessary
     - "./vhost.conf:/etc/nginx/conf.d/default.conf"
     - "../../app:/var/www"
     # - "/srv/docker_data/encrypted_chat/storage:/var/www/storage/app/public"

@@ -1,18 +1,19 @@
-# # SSL certificate creation
-# FROM debian:bookworm AS certificate_generator_image
-# RUN apt-get update
-# RUN apt-get install -y openssl
-# # remove apt cache
-# # https://askubuntu.com/a/1117923
-# RUN rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
-# VOLUME [ "/mnt" ]
-# # ENTRYPOINT [ "/bin/bash" ]
-# ENTRYPOINT [ "openssl" ]
-# # CMD [ "req", "-x509", "-nodes", "-days", "365", \
-# #     "-newkey", "rsa:2048", \
-# #     "-keyout", "/mnt/self.key", \
-# #     "-out", "/mnt/self.crt", \
-# #     "-subj", "/C=FR/ST=Dev/L=Local/O=LocalDev/OU=Dev/CN=localhost" ]
+# SSL certificate creation
+FROM debian:bookworm AS certificate_generator_image
+RUN apt-get update
+RUN apt-get install -y openssl
+# remove apt cache
+# https://askubuntu.com/a/1117923
+RUN rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
+VOLUME [ "/mnt" ]
+WORKDIR /mnt
+# ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "openssl" ]
+# CMD [ "req", "-x509", "-nodes", "-days", "365", \
+#     "-newkey", "rsa:2048", \
+#     "-keyout", "/mnt/self.key", \
+#     "-out", "/mnt/self.crt", \
+#     "-subj", "/C=FR/ST=Dev/L=Local/O=LocalDev/OU=Dev/CN=localhost" ]
 
 # PHP-FPM processor + Composer image
 FROM php:8.5-fpm AS app_image

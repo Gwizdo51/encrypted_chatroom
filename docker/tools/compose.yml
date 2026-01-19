@@ -64,33 +64,33 @@ services:
     - "install"
 
   # used to create a SSL/TLS certificate
-  # certificate_generator:
-  #   container_name: "web2mp3_tools_certificate_generator"
-  #   networks:
-  #   - "net"
-  #   build:
-  #     context: "../"
-  #     target: "certificate_generator_image"
-  #   image: "web2mp3/certificate_generator"
-  #   # run as the user that cloned the repository (replace if necessary)
-  #   user: "1000:1000"
-  #   volumes:
-  #   - "/srv/docker_data/web2mp3/certs:/mnt" # modify if necessary
-  #   # entrypoint: "bash"
-  #   command:
-  #   - "req"
-  #   - "-x509"
-  #   - "-nodes"
-  #   - "-days"
-  #   - "365"
-  #   - "-newkey"
-  #   - "rsa:2048"
-  #   - "-keyout"
-  #   - "/mnt/self.key"
-  #   - "-out"
-  #   - "/mnt/self.crt"
-  #   - "-subj"
-  #   - "/C=FR/ST=Dev/L=Local/O=LocalDev/OU=Dev/CN=yt2mp3.100.100.151.68.nip.io"
+  certificate_generator:
+    container_name: "encrypted_chat_tools_certificate_generator"
+    networks:
+    - "net"
+    build:
+      context: "../"
+      target: "certificate_generator_image"
+    image: "encrypted_chat/certificate_generator"
+    # run as the user that cloned the repository (replace if necessary)
+    # user: "1000:1000"
+    volumes:
+    - "/srv/docker_data/encrypted_chat/certs:/mnt" # modify if necessary
+    # entrypoint: "bash"
+    # command:
+    # - "req"
+    # - "-x509"
+    # - "-nodes"
+    # - "-days"
+    # - "365"
+    # - "-newkey"
+    # - "rsa:2048"
+    # - "-keyout"
+    # - "/mnt/self.key"
+    # - "-out"
+    # - "/mnt/self.crt"
+    # - "-subj"
+    # - "/C=FR/ST=Dev/L=Local/O=LocalDev/OU=Dev/CN=yt2mp3.100.100.151.68.nip.io"
 
   # SQLite command line tools
   # sqlite_cli:
